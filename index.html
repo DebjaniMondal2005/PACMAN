@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man</title>
+    <link rel="stylesheet" href="pacman.css">
+    <script src="pacman.js"></script>
+</head>
+<body>
+    <canvas id="board"></canvas>
+
+    <div id="game-over-overlay">
+        <div class="popup-content">
+            <h1>GAME OVER</h1>
+            <p id="final-score-display">Score: 0</p>
+            <button onclick="location.reload()">PLAY AGAIN</button>
+        </div>
+    </div>
+    <div id="life-lost-notifier">
+    <span id="life-text">LIFE LOST!</span>
+    <div id="lives-remaining">Remaining: 3</div>
+</div>
+</body>
+</html>
