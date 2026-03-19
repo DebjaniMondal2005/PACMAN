@@ -68,6 +68,25 @@ window.onload = function() {
     }
     update();
     document.addEventListener("keyup", movePacman);
+    // Add this inside window.onload = function() { ... }
+
+const addMobileControl = (id, direction) => {
+    const btn = document.getElementById(id);
+    // Use 'touchstart' for instant mobile response (faster than 'click')
+    btn.addEventListener("touchstart", (e) => {
+        e.preventDefault(); // Prevents zooming/scrolling while playing
+        if (gameOver) {
+            restartGame(); // Trigger restart if game is over
+        } else {
+            handleDirectionChange(direction);
+        }
+    });
+};
+
+addMobileControl("btn-up", 'U');
+addMobileControl("btn-down", 'D');
+addMobileControl("btn-left", 'L');
+addMobileControl("btn-right", 'R');
 }
 
 function loadImages() {
@@ -310,6 +329,30 @@ function showLifeLostPopup() {
     setTimeout(() => {
         notifier.style.display = "none";
     }, 1500);
+}
+
+
+function handleDirectionChange(dir) {
+    pacman.updateDirection(dir);
+    
+    // Update images based on direction
+    if (dir == 'U') pacman.image = pacmanUpImage;
+    if (dir == 'D') pacman.image = pacmanDownImage;
+    if (dir == 'L') pacman.image = pacmanLeftImage;
+    if (dir == 'R') pacman.image = pacmanRightImage;
+}
+
+// Now update your existing movePacman to use this helper
+function movePacman(e) {
+    if (gameOver) {
+        restartGame();
+        return;
+    }
+
+    if (e.code == "ArrowUp" || e.code == "KeyW") handleDirectionChange('U');
+    else if (e.code == "ArrowDown" || e.code == "KeyS") handleDirectionChange('D');
+    else if (e.code == "ArrowLeft" || e.code == "KeyA") handleDirectionChange('L');
+    else if (e.code == "ArrowRight" || e.code == "KeyD") handleDirectionChange('R');
 }
 
 class Block {

@@ -6,9 +6,17 @@
     <title>Pac-Man</title>
     <link rel="stylesheet" href="pacman.css">
     <script src="pacman.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
     <canvas id="board"></canvas>
+
+    <div class="mobile-controls">
+    <div class="control-btn" style="grid-area: up;" id="btn-up">▲</div>
+    <div class="control-btn" style="grid-area: left;" id="btn-left">◀</div>
+    <div class="control-btn" style="grid-area: right;" id="btn-right">▶</div>
+    <div class="control-btn" style="grid-area: down;" id="btn-down">▼</div>
+</div>
 
     <div id="game-over-overlay">
         <div class="popup-content">
